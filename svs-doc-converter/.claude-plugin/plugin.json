@@ -1,6 +1,6 @@
 {
   "name": "svs-doc-converter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert any document into a branded native Google Doc. Copies a brand master template from a Google Drive template library, then rebuilds the source content inside it with the brand's named styles, list glyphs, and table styling. Ships two skills: svs-convert (pinned to Suncoast Venture Studio) and branded-doc-converter (any brand in the library). Content moves Google-to-Google and never passes through the model, so document length is not a constraint.",
   "author": {
     "name": "Sean Dotson"

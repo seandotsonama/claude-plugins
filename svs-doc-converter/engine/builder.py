@@ -667,6 +667,26 @@ def apply_numbering_ladder(docs, document_id, rungs, tab_id=None):
         }
     ])
 
+    # 3b. top-level rungs sit flush on the left margin.
+    # The preset gives every level a hanging indent: the glyph is pushed in from
+    # the margin and the text parks at a tab stop well to its right, which on a
+    # numbered Heading 1 reads as a floating section number. Zeroing indentStart
+    # and indentFirstLine on depth-0 rungs only puts the number hard against the
+    # margin and collapses the glyph-to-text tab to a single space. Deeper rungs
+    # keep the preset's indentation, which is what makes the nesting readable.
+    _, found = locate()
+    _send(docs, document_id, [
+        {
+            "updateParagraphStyle": {
+                "range": rng(element),
+                "paragraphStyle": {"indentStart": {"magnitude": 0, "unit": "PT"},
+                                   "indentFirstLine": {"magnitude": 0, "unit": "PT"}},
+                "fields": "indentStart,indentFirstLine",
+            }
+        }
+        for element, depth in reversed(found) if depth == 0
+    ])
+
     # 4. drop the bullets from everything in the span that is not a rung
     paragraphs, found = locate()
     rung_starts = {element["startIndex"] for element, _ in found}

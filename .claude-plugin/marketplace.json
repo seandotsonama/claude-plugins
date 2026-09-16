@@ -1,6 +1,6 @@
 {
   "name": "seandotson-plugins",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Document and branding tooling for Claude Code",
   "owner": {
     "name": "Sean Dotson"
@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "svs-doc-converter",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "source": "./svs-doc-converter"
     }
   ]
